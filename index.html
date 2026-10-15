@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>БИЛАЛ ФАСТФУД</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;color:#292929;background:#fff}
+header{padding:15px 5%;display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;box-shadow:0 2px 10px #ddd;background:white}
+.logo{font-size:27px;font-weight:900;color:#e43b22}
+nav{display:flex;gap:14px;flex-wrap:wrap}
+nav a{color:#333;text-decoration:none;font-weight:bold}
+button{border:0;border-radius:12px;padding:12px;background:#e43b22;color:white;font-weight:bold;cursor:pointer}
+.hero{margin:22px auto;width:92%;padding:28px;border-radius:22px;background:#ffe5cc;display:flex;align-items:center;gap:20px}
+.hero div{flex:1}
+.hero h1{font-size:36px;margin:0 0 12px}
+.hero img{width:40%;height:210px;object-fit:cover;border-radius:18px}
+main{width:92%;margin:25px auto}
+.categories{display:flex;gap:10px;overflow-x:auto;padding:10px 0}
+.categories a{white-space:nowrap;padding:12px 18px;background:#f4f4f4;border-radius:20px;color:#333;text-decoration:none}
+h2{margin-top:32px}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.card{border-radius:18px;overflow:hidden;box-shadow:0 3px 15px #0001;background:white}
+.card img{width:100%;height:175px;object-fit:cover;display:block}
+.info{padding:15px}
+.info h3{margin:0 0 8px}
+.info p{color:#777;min-height:38px;line-height:1.4}
+.add{width:100%}
+footer{text-align:center;background:#292929;color:white;padding:25px;margin-top:40px}
+@media(max-width:550px){
+ header{padding:14px}
+ .hero{padding:20px;display:block}
+ .hero h1{font-size:29px}
+ .hero img{width:100%;height:170px;margin-top:15px}
+ .products{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .card img{height:125px}
+ .info{padding:10px}
+ .info h3{font-size:16px}
+ .info p{font-size:13px}
+ nav{gap:10px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">🍔 БИЛАЛ</div>
+  <nav>
+    <a href="#burgers">Бургеры</a>
+    <a href="#pizza">Пицца</a>
+    <a href="#combo">Комбо</a>
+    <a href="#snacks">Закуски</a>
+    <a href="#drinks">Напитки</a>
+  </nav>
+  <button onclick="showCart()">🛒 Корзина (<span id="count">0</span>)</button>
+</header>
+
+<section class="hero">
+  <div>
+    <h1>БИЛАЛ ФАСТФУД</h1>
+    <p>Вкусная еда для хорошего настроения!</p>
+    <p>🍔 Бургеры · 🍕 Пицца · 🍟 Комбо</p>
+    <button onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">Выбрать еду</button>
+  </div>
+  <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=700" alt="Бургер">
+</section>
+
+<main id="menu">
+  <h2>Наше меню</h2>
+  <div class="categories">
+    <a href="#burgers">🍔 Бургеры</a>
+    <a href="#pizza">🍕 Пицца</a>
+    <a href="#combo">🔥 Комбо</a>
+    <a href="#snacks">🍟 Закуски</a>
+    <a href="#drinks">🥤 Напитки</a>
+  </div>
+
+  <section id="burgers">
+    <h2>🍔 Бургеры</h2>
+    <div class="products">
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600" alt="Чизбургер">
+        <div class="info"><h3>Чизбургер</h3><p>Сочная котлета, сыр, овощи и соус.</p><button class="add" onclick="add('Чизбургер')">Добавить</button></div>
+      </article>
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1553979459-d2229ba7433a?w=600" alt="Бургер Билал">
+        <div class="info"><h3>Бургер БИЛАЛ</h3><p>Фирменный бургер со свежими овощами.</p><button class="add" onclick="add('Бургер БИЛАЛ')">Добавить</button></div>
+      </article>
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1561758033-d89a9ad46330?w=600" alt="Двойной бургер">
+        <div class="info"><h3>Двойной бургер</h3><p>Две котлеты, сыр и фирменный соус.</p><button class="add" onclick="add('Двойной бургер')">Добавить</button></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="pizza">
+    <h2>🍕 Пицца</h2>
+    <div class="products">
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600" alt="Пицца">
+        <div class="info"><h3>Маргарита</h3><p>Сыр, томатный соус и специи.</p><button class="add" onclick="add('Маргарита')">Добавить</button></div>
+      </article>
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1579751626657-72bc17010498?w=600" alt="Сырная пицца">
+        <div class="info"><h3>Сырная пицца</h3><p>Ароматная пицца с расплавленным сыром.</p><button class="add" onclick="add('Сырная пицца')">Добавить</button></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="combo">
+    <h2>🔥 Комбо</h2>
+    <div class="products">
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=600" alt="Комбо">
+        <div class="info"><h3>Комбо БИЛАЛ</h3><p>Бургер, картошка фри и напиток.</p><button class="add" onclick="add('Комбо БИЛАЛ')">Добавить</button></div>
+      </article>
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600" alt="Комбо для друзей">
+        <div class="info"><h3>Комбо для друзей</h3><p>Вкусный набор для компании.</p><button class="add" onclick="add('Комбо для друзей')">Добавить</button></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="snacks">
+    <h2>🍟 Закуски</h2>
+    <div class="products">
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600" alt="Картофель фри">
+        <div class="info"><h3>Картофель фри</h3><p>Золотистый и хрустящий.</p><button class="add" onclick="add('Картофель фри')">Добавить</button></div>
+      </article>
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1562967914-608f82629710?w=600" alt="Наггетсы">
+        <div class="info"><h3>Наггетсы</h3><p>Хрустящая курочка.</p><button class="add" onclick="add('Наггетсы')">Добавить</button></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="drinks">
+    <h2>🥤 Напитки</h2>
+    <div class="products">
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1513558161293-cdaf765edfd7?w=600" alt="Лимонад">
+        <div class="info"><h3>Лимонад</h3><p>Освежающий фруктовый напиток.</p><button class="add" onclick="add('Лимонад')">Добавить</button></div>
+      </article>
+      <article class="card">
+        <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?w=600" alt="Напиток">
+        <div class="info"><h3>Холодный напиток</h3><p>Освежающий напиток со льдом.</p><button class="add" onclick="add('Холодный напиток')">Добавить</button></div>
+      </article>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <h2>🍔 БИЛАЛ ФАСТФУД</h2>
+  <p>Вкус, который хочется повторить!</p>
+  <p>© 2026 БИЛАЛ</p>
+</footer>
+
+<script>
+let cart = [];
+
+function add(name) {
+  cart.push(name);
+  document.getElementById('count').textContent = cart.length;
+  alert(name + ' добавлен в корзину!');
+}
+
+function showCart() {
+  if (!cart.length) {
+    alert('Корзина пока пустая!');
+    return;
+  }
+  alert('Твоя корзина:\n\n' +
+    cart.map((name, i) => (i + 1) + '. ' + name).join('\n') +
+    '\n\nВсего товаров: ' + cart.length);
+}
+</script>
+
+</body>
+</html>
